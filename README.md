@@ -1,7 +1,7 @@
 <h1 align="center">UP</h1>
 
 <p align="center">
-  <a href="https://github.com/juliantellez/up" target="_blank">
+  <a href="https://github.com/rgommezz/up" target="_blank">
     <img alt="lambcycle" src="./assets/up.png" width="144">
   </a>
 </p>
@@ -34,7 +34,7 @@ Get UP and running in no time, start up your machine with one command!
 # Install
 
 <p align="center">
-  <a href="https://github.com/juliantellez/up" target="_blank">
+  <a href="https://github.com/rgommezz/up" target="_blank">
     <img alt="lambcycle" src="./assets/up_cli.png" width="500">
   </a>
 </p>
@@ -42,7 +42,7 @@ Get UP and running in no time, start up your machine with one command!
 Copy the following snippet into your current terminal.
 
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/juliantellez/up/master/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/rgommezz/up/master/install.sh)"
 ```
 
 # Tooling
@@ -143,7 +143,7 @@ Iterm2 >
 ```
 
 <p align="center">
-  <a href="https://github.com/juliantellez/up" target="_blank">
+  <a href="https://github.com/rgommezz/up" target="_blank">
     <img alt="lambcycle" src="./assets/up_iterm_config.gif" width="500">
   </a>
 </p>
