@@ -1,5 +1,5 @@
 # lock computer
-alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/C$
+alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/C$'
 
 # simple ip
 alias ip='ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2'
