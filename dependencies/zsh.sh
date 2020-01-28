@@ -25,3 +25,7 @@ copy_zsh_configuration () {
         print_error "Aborting..."
     fi
 }
+
+setup_aliases () {
+  source $(pwd)/config/.aliases
+}

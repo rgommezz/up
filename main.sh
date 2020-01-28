@@ -54,6 +54,9 @@ steps(){
     step "Config git"
     configure_git $(pwd)/config/.gitconfig $(pwd)/config/.gitignore_global
 
+    step: "Setup Aliases"
+    setup_aliases
+
     step "Setup: SSH key"
     setup_ssh_key
 
