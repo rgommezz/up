@@ -9,18 +9,27 @@ POWERLEVEL9K_MODE="nerdfont-complete"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir_writable dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status nvm node_version background_jobs history)
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} $user_symbol%{%b%f%k%F{yellow}%} %{%f%}"
+# Add a space in the first prompt
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%f"
+# Visual customisation of the second prompt line
+local user_symbol="$"
+if [[ $(print -P "%#") =~ "#" ]]; then
+    user_symbol = "#"
+fi
 
 plugins=(
     git
-    docker
-    docker-compose
     node
     npm
+    zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-completions
 )
 
-# reloading compleition
+# reloading completion
 autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
@@ -31,44 +40,29 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# Python 3.4 #
+###################
+PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:${PATH}"
+
+# Fastlane #
+###################
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# Rbenv #
+###################
+eval "$(rbenv init -)"
+
 # AVN #
 ###################
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh"
 
-# AWS #
-##################
-complete -C $(which aws_completer) aws # tab compleition
-
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-#
-# AWS USER SWITCH
-# Autocompletion is defined in ~/.oh-my-zsh/completions/_aws-user
-#
-function aws-users() {
-    grep '\[' ~/.aws/credentials | grep -v '#' | tr -d '[' | tr -d ']'
-};
-
-function aws-user () {
-    if [ -z $1 ];
-    then
-        echo "specify AWS user";
-        return;
-    fi
-    
-    exists="$(aws configure get aws_access_key_id --profile $1)"
-    if [[ -n $exists ]]; then
-        export AWS_DEFAULT_PROFILE=$1;
-        export AWS_PROFILE=$1;
-        export AWS_REGION=$(aws configure get region --profile $1);
-        echo "Switched to AWS Profile: $1";
-        aws configure list
-    fi
-}
-
-#
-# Kubernetes
-#
+# Android Studio #
 ##################
-source <(kubectl completion zsh) # tab compleition
+export ANDROID_HOME=${HOME}/Library/Android/sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+export ANDROID_SDK=/Users/rauliyohmc/Library/Andrdoid/sdk
+export ANDROID_NDK=/Users/rauliyohmc/android-ndk/android-ndk-r10e
